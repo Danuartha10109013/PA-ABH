@@ -124,7 +124,7 @@
                                 <div class="company-info">
                                     <div class="company-name">PT Teknologi Mudah Terhubung</div>
                                     <div class="company-address">Jl. Cendana No. AE/55, Cigadung, Subang, Jawa Barat 41213</div>
-                                    <div class="company-contact">Telp: 08996150000 | Email : hi@tappp.link | Website: www.tekmt.co.id</div>
+                                    <div class="company-contact">Telp: 08996150000 | Email : hi@tappp.link </div>
                                 </div>
                             </div>
                             <div class="document-info">
