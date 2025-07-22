@@ -300,7 +300,7 @@
                                             <input type="number"
                                                 class="form-control @error('amount_piutang') is-invalid @enderror"
                                                 id="amount_piutang_idr" name="amount_piutang" placeholder="Amount"
-                                                value="{{ old('amount') }}">
+                                                value="{{ old('amount') }}" readonly>
                                             <label for="amount_piutang_idr">Amount</label>
                                         </div>
                                         <span class="input-group-text">IDR</span>
@@ -591,6 +591,17 @@
             if(typeSelectPiutang && installmentGroupPiutang) {
                 toggleInstallmentFieldPiutang();
                 typeSelectPiutang.addEventListener('change', toggleInstallmentFieldPiutang);
+            }
+
+            // Sinkronisasi amount utama ke amount piutang
+            const mainAmountInput = document.getElementById('amount_idr');
+            const piutangAmountInput = document.getElementById('amount_piutang_idr');
+            if(mainAmountInput && piutangAmountInput) {
+                function syncPiutangAmount() {
+                    piutangAmountInput.value = mainAmountInput.value;
+                }
+                mainAmountInput.addEventListener('input', syncPiutangAmount);
+                syncPiutangAmount();
             }
         });
 

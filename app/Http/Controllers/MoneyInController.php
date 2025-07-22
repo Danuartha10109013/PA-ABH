@@ -96,7 +96,7 @@ class MoneyInController extends Controller
                     $cicilanAmount = $request->amount_piutang / $cicilanCount;
 
                     for ($i = 0; $i < $cicilanCount; $i++) {
-                        $due = \Carbon\Carbon::parse($request->due_date_piutang)->subMonths($cicilanCount - ($i + 1));
+                        $due = \Carbon\Carbon::parse($request->due_date_piutang)->addMonths($i);
                         \App\Models\PiutangInstallement::create([
                             'piutang_collection_id' => $piutang->collection_id,
                             'amount' => $cicilanAmount,

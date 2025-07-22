@@ -12,6 +12,7 @@ class PiutangInstallement extends Model
         'amount',
         'due_date',
         'is_paid',
+        'reminded_besok',
     ];
 
     public function piutang()

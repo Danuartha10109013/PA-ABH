@@ -276,7 +276,7 @@
                                             <input type="number"
                                                 class="form-control @error('amount_utang') is-invalid @enderror"
                                                 id="amount_utang_idr" name="amount_utang" placeholder="Amount"
-                                                value="{{ old('amount') }}">
+                                                value="{{ old('amount') }}" readonly>
                                             <label for="amount_utang_idr">Amount</label>
                                         </div>
                                         <span class="input-group-text">IDR</span>
@@ -648,6 +648,19 @@
             toggleInstallmentField();
 
             typeSelect.addEventListener('change', toggleInstallmentField);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sinkronisasi amount utama ke amount utang
+            const mainAmountInput = document.getElementById('amount_idr');
+            const utangAmountInput = document.getElementById('amount_utang_idr');
+            if(mainAmountInput && utangAmountInput) {
+                function syncUtangAmount() {
+                    utangAmountInput.value = mainAmountInput.value;
+                }
+                mainAmountInput.addEventListener('input', syncUtangAmount);
+                syncUtangAmount();
+            }
         });
     </script>
 @endpush

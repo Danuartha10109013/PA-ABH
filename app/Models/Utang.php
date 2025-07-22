@@ -19,6 +19,7 @@ class Utang extends Model
         'installment_count',
         'type',
         'note',
+        'reminded_besok',
     ];
 
     protected static function boot()

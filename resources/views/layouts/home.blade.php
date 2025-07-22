@@ -72,24 +72,24 @@
         // });
 
 
-        setInterval(() => {
-            fetch('/trigger-utang-reminder')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Reminder dipicu:', data);
-                })
-                .catch(error => {
-                    console.error('Gagal polling reminder:', error);
-                });
-        }, 5000);
         // setInterval(() => {
-        //     fetch('/trigger-piutang-reminder')
+        //     fetch('/trigger-utang-reminder')
         //         .then(response => response.json())
         //         .then(data => {
         //             console.log('Reminder dipicu:', data);
         //         })
         //         .catch(error => {
         //             console.error('Gagal polling reminder:', error);
+        //         });
+        // }, 5000);
+        // setInterval(() => {
+        //     fetch('/trigger-piutang-reminder')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log('Reminder piutang dipicu:', data);
+        //         })
+        //         .catch(error => {
+        //             console.error('Gagal polling reminder piutang:', error);
         //         });
         // }, 5000);
     </script>

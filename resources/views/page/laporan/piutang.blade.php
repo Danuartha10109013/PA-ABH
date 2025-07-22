@@ -121,10 +121,9 @@
                                             onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'company-logo-text\'>FMS</div>'">
                                     </div>
                                     <div class="company-info">
-                                        <div class="company-name">PT. TAPPP</div>
-                                        <div class="company-address">Jl. Keuangan Raya No. 123, Jakarta Selatan 12345</div>
-                                        <div class="company-contact">Telp: (021) 555-1234 | Email: info@tekmt.co.id |
-                                            Website: www.tekmt.co.id</div>
+                                        <div class="company-name">PT Teknologi Mudah Terhubung</div>
+                                        <div class="company-address">Jl. Cendana No. AE/55, Cigadung, Subang, Jawa Barat 41213</div>
+                                        <div class="company-contact">Telp: 08996150000 | Email : hi@tappp.link | Website: www.tekmt.co.id</div>
                                     </div>
                                 </div>
                                 <div class="document-info">

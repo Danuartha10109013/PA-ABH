@@ -100,7 +100,7 @@ class MoneyOutController extends Controller
                     $cicilanAmount = $request->amount_utang / $cicilanCount;
 
                     for ($i = 0; $i < $cicilanCount; $i++) {
-                        $due = Carbon::parse($request->due_date_utang)->subMonths($cicilanCount - ($i + 1)); // Mundur tiap bulan
+                        $due = Carbon::parse($request->due_date_utang)->addMonths($i);
                         UtangInstallement::create([
                             'utang_trx_id' => $utang->trx_id,
                             'amount' => $cicilanAmount,

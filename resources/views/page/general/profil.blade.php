@@ -17,98 +17,85 @@
 @endpush
 
 @section('content')
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="card-title">
-                        Profil Saya
-                    </h4>
-                </div>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow-lg w-100" style="max-width: 700px;">
+            <div class="card-header bg-primary text-white text-center rounded-top">
+                <h4 class="card-title mb-0">Profil Saya</h4>
             </div>
             <form action="{{ route('profil.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="card-body">
-                    <div class="row p-5">
-                        <div class="col-md-2">
-                            <div class="img">
-                                @if ($user->photo)
-                                    <img id="preview-image" src="{{ asset('user/photo/' . $user->photo) }}" alt="Profile"
-                                        class="img-fluid rounded" style="max-width: 250px;">
-                                @else
-                                    <img id="preview-image" src="{{ asset('assets/img/profile.jpg') }}" alt="Profile"
-                                        class="img-fluid rounded" style="max-width: 250px;">
-                                @endif
-                            </div>
-                            <div class="mt-3">
-                                <input type="file" id="image-input" class="form-control d-none" accept="image/*"
-                                    name="photo">
-                                <button type="button" class="btn btn-secondary mt-2"
-                                    onclick="document.getElementById('image-input').click();">
-                                    Ubah Foto
-                                </button>
-                            </div>
+                <div class="card-body p-4">
+                    <div class="d-flex flex-column align-items-center mb-4">
+                        <div class="img mb-2" style="width: 140px; height: 140px; border-radius: 50%; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            @if ($user->photo)
+                                <img id="preview-image" src="{{ asset('user/photo/' . $user->photo) }}" alt="Profile"
+                                    class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                            @else
+                                <img id="preview-image" src="{{ asset('assets/img/profile.jpg') }}" alt="Profile"
+                                    class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                            @endif
                         </div>
-
-                        <div class="col-md-10">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Nama</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Nama"
-                                            name="name" value="{{ old('name', $user->name) }}">
-                                    </div>
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <div class="mb-3">
-                                        <label class="form-label">No Whatsapp</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan No Whatsapp"
-                                            name="no_phone" value="{{ old('no_phone', $user->no_phone ?? '08XXXXXXX') }}">
-                                    </div>
-                                    @error('no_phone')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                @php
-                                    $role = [
-                                        'cfo' => 'Chief Financial Officer',
-                                        'ceo' => 'Chief Executive Officer',
-                                    ];
-                                @endphp
-
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" placeholder="Masukkan Email"
-                                            name="email" value="{{ old('email', $user->email) }}">
-                                    </div>
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                    <div class="mb-3">
-                                        <label class="form-label">Bagian</label>
-                                        <input type="text" class="form-control" value="{{ $role[$user->role] ?? '-' }}"
-                                            readonly>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control"
-                                        placeholder="Masukkan Password jika ingin mengganti password" name="password"
-                                        value="{{ old('password') }}">
-                                </div>
-                                @error('password')
-                                    <span class="text-danger">{{ $message }}</span>
+                        <input type="file" id="image-input" class="form-control d-none" accept="image/*" name="photo">
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-2 px-4"
+                            onclick="document.getElementById('image-input').click();">
+                            Ubah Foto
+                        </button>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label class="form-label">Nama</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Nama"
+                                    name="name" value="{{ old('name', $user->name) }}">
+                                @error('name')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">No Whatsapp</label>
+                                <input type="text" class="form-control" placeholder="Masukkan No Whatsapp"
+                                    name="no_phone" value="{{ old('no_phone', $user->no_phone ?? '08XXXXXXX') }}">
+                                @error('no_phone')
+                                    <span class="text-danger small">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="Masukkan Email"
+                                    name="email" value="{{ old('email', $user->email) }}">
+                                @error('email')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            @php
+                                $role = [
+                                    'cfo' => 'Chief Financial Officer',
+                                    'ceo' => 'Chief Executive Officer',
+                                ];
+                            @endphp
+                            <div class="mb-2">
+                                <label class="form-label">Bagian</label>
+                                <input type="text" class="form-control bg-light" value="{{ $role[$user->role] ?? '-' }}"
+                                    readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control"
+                                placeholder="Masukkan Password jika ingin mengganti password" name="password"
+                                value="{{ old('password') }}">
+                            @error('password')
+                                <span class="text-danger small">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
-                <div class="card-footer text-end p-3">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                <div class="card-footer text-center bg-white border-0 pb-4">
+                    <button type="submit" class="btn btn-primary px-5 py-2 shadow">Update</button>
                 </div>
             </form>
         </div>
