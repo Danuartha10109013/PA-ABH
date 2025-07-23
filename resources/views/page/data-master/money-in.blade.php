@@ -338,6 +338,20 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="owner_phone_piutang"
+                                        class="form-control @error('owner_phone_piutang') is-invalid @enderror"
+                                        name="owner_phone_piutang" value="{{ old('owner_phone_piutang') }}"
+                                        placeholder="Nomor Telepon Owner (WA)" autocomplete="off" required>
+                                    <label for="owner_phone_piutang">Nomor Telepon Owner (WA)</label>
+                                    @error('owner_phone_piutang')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    <small class="text-danger">Format: 08xxxxxxxxxx atau 628xxxxxxxxxx</small>
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="type_piutang">Payment Type<span class="text-danger">*</span></label>
                                     <select name="type_piutang" class="form-control @error('type_piutang') is-invalid @enderror" id="type_piutang">
@@ -662,6 +676,23 @@
 
         $(document).ready(function() {
             $("#datatable").DataTable({});
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const piutangCheckbox = document.getElementById('piutang_id');
+            const ownerPhoneInput = document.getElementById('owner_phone_piutang');
+            function toggleOwnerPhoneRequired() {
+                if (piutangCheckbox.checked) {
+                    ownerPhoneInput.required = true;
+                } else {
+                    ownerPhoneInput.required = false;
+                }
+            }
+            if (piutangCheckbox && ownerPhoneInput) {
+                toggleOwnerPhoneRequired();
+                piutangCheckbox.addEventListener('change', toggleOwnerPhoneRequired);
+            }
         });
     </script>
 @endpush

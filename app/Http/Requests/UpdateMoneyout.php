@@ -31,6 +31,7 @@ class UpdateMoneyout extends FormRequest
             'payment_date' => 'required|date',
             'note' => 'nullable|string',
             'tax' => 'nullable|numeric|min:0|max:100',
+            'wa_utang' => ['nullable', 'regex:/^(08|628)[0-9]{8,15}$/'],
         ];
 
         return $rules;
@@ -64,6 +65,7 @@ class UpdateMoneyout extends FormRequest
 
             'tax.numeric' => 'Pajak harus berupa angka.',
             'tax.max' => 'Pajak maksimal 100%',
+            'wa_utang.regex' => 'Format nomor WhatsApp tidak valid. Gunakan 08xxxxxxxxxx atau 628xxxxxxxxxx.',
         ];
     }
 }

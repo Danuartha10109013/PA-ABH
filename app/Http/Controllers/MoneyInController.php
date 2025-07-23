@@ -90,6 +90,7 @@ class MoneyInController extends Controller
                         "note" => $request->note_piutang,
                         "type" => 'installment',
                         "installment_count" => $request->installement_count_piutang,
+                        "owner_phone" => $request->owner_phone_piutang,
                     ]);
 
                     $cicilanCount = (int) $request->installement_count_piutang;
@@ -112,6 +113,7 @@ class MoneyInController extends Controller
                         "due_date" => $request->due_date_piutang,
                         "note" => $request->note_piutang,
                         "type" => 'full',
+                        "owner_phone" => $request->owner_phone_piutang,
                     ]);
                 }
             }

@@ -21,6 +21,7 @@ class Piutang extends Model
         'is_paid',
         'installment_count',
         'reminded_besok',
+        'owner_phone',
     ];
 
 

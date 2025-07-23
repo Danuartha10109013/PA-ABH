@@ -93,7 +93,8 @@ class MoneyOutController extends Controller
                         "due_date" => $request->due_date_utang,
                         "note" => $request->note_utang,
                         "type" => 'installment',
-                        "installment_count" => $request->installement_count
+                        "installment_count" => $request->installement_count,
+                        "wa_utang" => $request->wa_utang,
                     ]);
 
                     $cicilanCount = (int) $request->installement_count;
@@ -115,6 +116,7 @@ class MoneyOutController extends Controller
                         "payment_from" => $request->payment_from_utang,
                         "due_date" => $request->due_date_utang,
                         "note" => $request->note_utang,
+                        "wa_utang" => $request->wa_utang,
                     ]);
                 }
             }
@@ -195,6 +197,13 @@ class MoneyOutController extends Controller
             $moneyOut->note = $request->note;
             $moneyOut->tax = $taxPercentage;
             $moneyOut->save();
+
+            // Update wa_utang jika ada utang terkait
+            $utang = \App\Models\Utang::where('moneyout_id', $moneyOut->trx_id)->first();
+            if ($utang && $request->has('wa_utang')) {
+                $utang->wa_utang = $request->wa_utang;
+                $utang->save();
+            }
 
             DB::commit();
 

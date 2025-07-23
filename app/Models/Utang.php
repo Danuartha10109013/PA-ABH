@@ -20,6 +20,7 @@ class Utang extends Model
         'type',
         'note',
         'reminded_besok',
+        'wa_utang',
     ];
 
     protected static function boot()

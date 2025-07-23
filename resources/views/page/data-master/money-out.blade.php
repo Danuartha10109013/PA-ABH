@@ -366,6 +366,19 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="wa_utang"
+                                        class="form-control @error('wa_utang') is-invalid @enderror"
+                                        name="wa_utang" value="{{ old('wa_utang') }}"
+                                        placeholder="Nomor WhatsApp (Opsional)" autocomplete="off">
+                                    <label for="wa_utang">Nomor WhatsApp (Opsional)</label>
+                                    @error('wa_utang')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    <small class="text-muted">Hanya sebagai informasi, tidak wajib diisi.</small>
+                                </div>
                             </div>
                         </div>
                     </div>

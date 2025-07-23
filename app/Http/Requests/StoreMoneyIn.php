@@ -43,6 +43,7 @@ class StoreMoneyIn extends FormRequest
         if ($this->piutang == 1) {
             $rules['amount_piutang'] = 'required|integer|min:1';
             $rules['due_date_piutang'] = 'required|date';
+            $rules['owner_phone_piutang'] = ['required', 'regex:/^(08|628)[0-9]{8,15}$/'];
         }
         return $rules;
     }
@@ -90,6 +91,8 @@ class StoreMoneyIn extends FormRequest
             'due_date_piutang.date' => 'Format tanggal Piutang tidak valid.',
 
             'note_piutang.string' => 'Catatan harus berupa teks.',
+            'owner_phone_piutang.required' => 'Nomor telepon owner wajib diisi.',
+            'owner_phone_piutang.regex' => 'Format nomor telepon owner tidak valid. Gunakan 08xxxxxxxxxx atau 628xxxxxxxxxx.',
         ];
     }
 

@@ -246,6 +246,16 @@
                                 @enderror
                             </div>
 
+                            <div class="form-floating mb-3">
+                                <input type="text" id="owner_phone" name="owner_phone" class="form-control @error('owner_phone') is-invalid @enderror" value="{{ old('owner_phone', $item->owner_phone ?? '') }}" placeholder="Nomor Telepon Pemilik Utang">
+                                <label for="owner_phone">Nomor Telepon Pemilik Utang</label>
+                                @error('owner_phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                             <div class="mb-3">
                                 <label for="due_date">Due Date<span class="text-danger">*</span></label>
                                 <input type="date" id="due_date"
